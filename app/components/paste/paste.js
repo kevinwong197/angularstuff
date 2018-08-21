@@ -1,4 +1,4 @@
-angular.module('paste', []);
+angular.module('paste', ['banner']);
 angular
   .module('paste')
   .controller('pasteController', ['$scope', function($scope) {

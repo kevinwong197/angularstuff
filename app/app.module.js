@@ -2,5 +2,6 @@
 
 angular.module('App', [
   'ngRoute',
-  'paste'
+  'paste',
+  'banner'
 ]);
