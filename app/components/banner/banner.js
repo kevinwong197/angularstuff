@@ -17,6 +17,6 @@ angular
       scope: true,
       controller: 'bannerController',
       controllerAs: '$ctrl',
-      templateUrl: '/app/components/banner/banner.html'
+      templateUrl: 'app/components/banner/banner.html'
     };
   });
