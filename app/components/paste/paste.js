@@ -12,26 +12,33 @@ angular
       event.preventDefault();
     };
     droparea.ondrop = function(event) {
-      var file = event.dataTransfer.files[0];
-      if ($scope.isPic(file)) {
-        $scope.updatePic(file);
+      var files = event.dataTransfer.files;
+      if (files && files[0] && $scope.isPic(files[0])) {
+        $scope.searchByFiles(files);
       }
       event.preventDefault();
     };
     $scope.isPic = function (file) {
       return file.type.startsWith("image/");
     }
-    $scope.updatePic = function (file) {
-      alert(file.name);
-    };
+    $scope.searchByFiles = function (files) {
+      formfile.files = files;
+      hiddenform.submit();
+    }
+    $scope.searchByUrl = function (url) {
+      var target = 'https://images.google.com/searchbyimage?image_url='+url;
+      window.location = target;
+    }
     $scope.clicked = function () {
       dropfileinput.click();
     };
     $scope.pasted = function (event) {
-      var items = (event.clipboardData || event.originalEvent.clipboardData).items;
-      var file = items[0].getAsFile();
-      if ($scope.isPic(file)) {
-        $scope.updatePic(file);
+      var files = event.clipboardData.files
+      var url = event.clipboardData.getData('Text')
+      if (files && files[0] && $scope.isPic(files[0])) {
+        $scope.searchByFiles(files);
+      } else if (url) {
+        $scope.searchByUrl(url);
       }
     }
     $scope.dummy = null;

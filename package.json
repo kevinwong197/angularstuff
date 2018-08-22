@@ -4,15 +4,15 @@
     "version": "0.0.0",
     "description": "paste and search",
     "license": "MIT",
-    "devDependencies": {
-        "angular": "1.5.x",
-        "angular-mocks": "1.5.x",
-        "angular-route": "1.5.x",
-        "bootstrap": "4.1.x",
-        "http-server": "^0.9.0"
-    },
+    "devDependencies": {},
     "scripts": {
         "prestart": "npm install",
         "start": "http-server -a localhost -p 8000 -c-1"
+    },
+    "dependencies": {
+        "angular": "1.5.x",
+        "angular-route": "1.5.x",
+        "bootstrap": "4.1.x",
+        "http-server": "^0.9.0"
     }
 }

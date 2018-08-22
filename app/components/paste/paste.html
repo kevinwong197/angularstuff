@@ -6,7 +6,15 @@
   <input
     class="d-none"
     type="file" id="dropfileinput" name="file" ng-model="dummy" accept="image/*"
-    onchange="angular.element(this).scope().updatePic(this.files[0])">
+    onchange="angular.element(this).scope().searchByFiles(this.files)">
+
+  <form
+    class="d-none"
+    enctype="multipart/form-data"
+    action='https://www.google.com/searchbyimage/upload' method="POST" id="hiddenform">
+    <input type="file" id="formfile" name="encoded_image"/>
+    <input type="submit">
+  </form>
 
   <div id="droparea"
     class="m-4 jumbotron card border border-secondary dashed pastearea clickable"
