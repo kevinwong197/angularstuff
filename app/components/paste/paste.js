@@ -2,17 +2,21 @@ angular.module('paste', ['banner']);
 angular
   .module('paste')
   .controller('pasteController', ['$scope', function($scope) {
-    droparea.ondragover = function(event) {
+    document.ondragover = function(event) {
       event.preventDefault();
     };
-    droparea.ondragenter = function(event) {
+    document.ondragenter = function(event) {
+      event.preventDefault();
+    };
+    document.ondrop = function(event) {
       event.preventDefault();
     };
     droparea.ondrop = function(event) {
       var mime = event.dataTransfer.files[0].type;
       if (mime.startsWith("image/")) {
-        dropfileinput.files = event.dataTransfer.files;
+        $scope.updatePic(event.dataTransfer.files[0]);
       }
+      event.preventDefault();
     };
     $scope.updatePic = function (file) {
       alert(file.name);
