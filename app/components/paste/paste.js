@@ -9,7 +9,10 @@ angular
       event.preventDefault();
     };
     droparea.ondrop = function(event) {
-      dropfileinput.files = event.dataTransfer.files;
+      var mime = event.dataTransfer.files[0].type;
+      if (mime.startsWith("image/")) {
+        dropfileinput.files = event.dataTransfer.files;
+      }
     };
     $scope.updatePic = function (file) {
       alert(file.name);
