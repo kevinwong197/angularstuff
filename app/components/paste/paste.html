@@ -1,9 +1,15 @@
-<!-- <p>{{cat}}</p> -->
 <div class="text-center page">
   <div class="mb-0">
     <banner></banner>
   </div>
-  <div class="m-4 jumbotron card border border-secondary dashed pastearea">
+
+  <input
+    style="display: none"
+    type="file" id="file" name="file" ng-model="dummy" accept="image/*"
+    onchange="angular.element(this).scope().updatePic(this.files[0])">
+
+  <div class="m-4 jumbotron card border border-secondary dashed pastearea clickable"
+    ng-click="clicked()">
     <h1 class="my-auto text-muted">Drop File Here</h1>
   </div>
 </div>

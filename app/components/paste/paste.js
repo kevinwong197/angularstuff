@@ -2,7 +2,13 @@ angular.module('paste', ['banner']);
 angular
   .module('paste')
   .controller('pasteController', ['$scope', function($scope) {
-    $scope.cat = 'ok';
+    $scope.updatePic = function (file) {
+      alert(file.name);
+    };
+    $scope.clicked = function () {
+      document.getElementById('file').click();
+    };
+    $scope.dummy = null;
   }]);
 angular
   .module('paste')
