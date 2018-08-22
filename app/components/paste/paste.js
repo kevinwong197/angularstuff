@@ -61,6 +61,6 @@ angular
       scope: true,
       controller: 'pasteController',
       controllerAs: '$ctrl',
-      templateUrl: '/app/components/paste/paste.html'
+      templateUrl: 'app/components/paste/paste.html'
     };
   });
