@@ -13,13 +13,21 @@ angular
     };
     droparea.ondrop = function(event) {
       var files = event.dataTransfer.files;
-      if (files && files[0] && $scope.isPic(files[0])) {
+      if (files && files[0] && $scope.isFilePic(files[0])) {
         $scope.searchByFiles(files);
       }
       event.preventDefault();
     };
-    $scope.isPic = function (file) {
+    $scope.isFilePic = function (file) {
       return file.type.startsWith("image/");
+    }
+    $scope.ifUrlPic = function (url, callback) {
+      var img = new Image();
+      img.onload = function () {
+        callback(url);
+      };
+      img.onerror = function () {};
+      img.src = url;
     }
     $scope.searchByFiles = function (files) {
       formfile.files = files;
@@ -35,10 +43,12 @@ angular
     $scope.pasted = function (event) {
       var files = event.clipboardData.files
       var url = event.clipboardData.getData('Text')
-      if (files && files[0] && $scope.isPic(files[0])) {
+      if (files && files[0] && $scope.isFilePic(files[0])) {
         $scope.searchByFiles(files);
       } else if (url) {
-        $scope.searchByUrl(url);
+        $scope.ifUrlPic(url, function (url) {
+          $scope.searchByUrl(url);
+        })
       }
     }
     $scope.dummy = null;
