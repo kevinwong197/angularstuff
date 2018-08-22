@@ -20,6 +20,11 @@ angular
     $scope.clicked = function () {
       dropfileinput.click();
     };
+    $scope.pasted = function (event) {
+      var items = (event.clipboardData || event.originalEvent.clipboardData).items;
+      var file = items[0].getAsFile();
+      $scope.updatePic(file);
+    }
     $scope.dummy = null;
   }]);
 angular
