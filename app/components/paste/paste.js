@@ -12,12 +12,15 @@ angular
       event.preventDefault();
     };
     droparea.ondrop = function(event) {
-      var mime = event.dataTransfer.files[0].type;
-      if (mime.startsWith("image/")) {
-        $scope.updatePic(event.dataTransfer.files[0]);
+      var file = event.dataTransfer.files[0];
+      if ($scope.isPic(file)) {
+        $scope.updatePic(file);
       }
       event.preventDefault();
     };
+    $scope.isPic = function (file) {
+      return file.type.startsWith("image/");
+    }
     $scope.updatePic = function (file) {
       alert(file.name);
     };
@@ -27,7 +30,9 @@ angular
     $scope.pasted = function (event) {
       var items = (event.clipboardData || event.originalEvent.clipboardData).items;
       var file = items[0].getAsFile();
-      $scope.updatePic(file);
+      if ($scope.isPic(file)) {
+        $scope.updatePic(file);
+      }
     }
     $scope.dummy = null;
   }]);
